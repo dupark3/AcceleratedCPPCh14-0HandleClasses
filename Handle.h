@@ -22,7 +22,6 @@ Handle<T>& Handle<T>::operator= (const Handle& rhs){
     if (&rhs!= this){
         delete p;
         p = rhs.p ? rhs.p->clone() : 0;
-        // p = T(rhs);
     }
     return *this;
 }
