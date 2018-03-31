@@ -1,4 +1,4 @@
-#include <cstdef> // size_t
+#include <cstddef> // size_t
 #include <stdexcept> // runtime_error
 
 template <class T>
@@ -30,7 +30,7 @@ Ref_handle<T>& Ref_handle<T>::operator=(const Ref_handle& rhs){
     ++*rhs.refptr;
     if (--*refptr == 0){
         delete refptr;
-        delete p;   
+        delete p;
     }
     p = rhs.p;
     refptr = rhs.refptr;
@@ -42,7 +42,7 @@ Ref_handle<T>::~Ref_handle<T>(){
     if (--*refptr == 0){
         delete refptr;
         delete p;
-    } 
+    }
 }
 
 /*template <class T>
