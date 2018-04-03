@@ -1,3 +1,6 @@
+#ifndef GUARD_Handle_h
+#define GUARD_Handle_h
+
 #include <stdexcept> // runtime_error
 
 template <class T> class Handle{
@@ -15,7 +18,7 @@ public:
 
 private:
     T* p;
-}
+};
 
 template <class T>
 Handle<T>& Handle<T>::operator= (const Handle& rhs){
@@ -39,3 +42,5 @@ T* Handle<T>::operator->() const{
         return p;
     throw std::runtime_error("unbound Handle");
 }
+
+#endif // GUARD_Handle_h

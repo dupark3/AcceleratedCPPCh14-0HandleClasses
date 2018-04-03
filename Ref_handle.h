@@ -1,3 +1,6 @@
+#ifndef GUARD_Ref_handle_h
+#define GUARD_Ref_handle_h
+
 #include <cstddef> // size_t
 #include <stdexcept> // runtime_error
 
@@ -45,20 +48,4 @@ Ref_handle<T>::~Ref_handle<T>(){
     }
 }
 
-/*template <class T>
-Ref_handle<T>& Ref_handle<T>::operator= (const Ref_handle& rhs){
-    if (rhs.p != p){
-        if (*refptr == 1) {
-            delete p;
-            delete refptr;
-        } else {
-            --*refptr;
-        }
-        p = rhs.p;
-        refptr = rhs.refptr;
-        ++*rhs.refptr;
-    }
-
-    return *this;
-}*/
-
+#endif // GUARD_Ref_handle_h

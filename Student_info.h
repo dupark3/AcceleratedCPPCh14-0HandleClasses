@@ -8,13 +8,15 @@
 
 #include "Handle.h"
 
+bool compare(const std::string&, const std::string&);
 
     /******************
     * BASE CORE CLASS *
     *******************/
 
 class Core{
-friend class Handle;
+template <class T> friend class Handle;
+friend class Student_info;
 public:
     Core() : midterm(0), final(0) { }
     Core(std::istream& is) { read(is); }
@@ -94,7 +96,9 @@ class Student_info{
 public:
     Student_info() : cp(0) { }
     Student_info(std::istream& is) : cp(0) { read(is); }
-    
+    Student_info(const Student_info&);
+    Student_info& operator=(const Student_info&);
+
     std::istream& read(std::istream&);
     std::string name() const{
         if(cp) return cp->name();

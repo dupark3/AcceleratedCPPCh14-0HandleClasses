@@ -1,4 +1,5 @@
 #include <algorithm> // max
+#include <iomanip> //streamsize
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,8 +10,8 @@
 
 
 int main() {
-    std::cout << "Enter the type of student (U or G), name,
-                  midterm, final, (thesis if grad), and homework grades:" << std::endl;
+    std::cout << "Enter the type of student (U or G), name,"
+              << "midterm, final, (thesis if grad), and homework grades:" << std::endl;
 
     std::vector< Handle<Core> > students;
     Handle<Core> record;
@@ -28,11 +29,11 @@ int main() {
 
     std::sort(students.begin(), students.end(), compare_Core_handles);
 
-    for (std::vector< Handle<Core> >::size_type i = 0; i != students.end(); ++i){
+    for (std::vector< Handle<Core> >::size_type i = 0; i != students.size(); ++i){
         std::cout << students[i]->name() << std::string(maxlen + 1 - students[i]->name().size(), ' ');
         try{
             double final_grade = students[i]->grade();
-            streamsize prec = std::cout.precision();
+            std::streamsize prec = std::cout.precision();
             std::cout << final_grade << students[i]->letterGrade() << std::endl;
         } catch (domain_error e){
             std::cout << e.what << std::endl;

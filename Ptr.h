@@ -1,3 +1,6 @@
+#ifndef GUARD_Ptr_h
+#define GUARD_Ptr_h
+
 #include <stdexcept>
 
 template <class T>
@@ -13,16 +16,16 @@ public:
             delete refptr;
         }
         p = rhs.p;
-        refptr = rhs.refptr;    
+        refptr = rhs.refptr;
         return *this;
     }
     ~Ptr(){
         if(--*refptr == 0){
             delete p;
             delete refptr;
-        } 
+        }
     }
-    
+
     operator bool() const { return p; }
     T& operator* const {
         if(p) return *p;
@@ -44,3 +47,5 @@ private:
     T* p;
     std::size_t* refptr;
 };
+
+#endif // GUARD_Ptr_h
